@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Product",
+  "description": "A sample json schema for a product",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "Unique product Id",
+      "type": "integer"
+    },
+    "name": {
+      "description": "Product name",
+      "type": "string"
+    },
+    "price": {
+      "description": "Product price",
+      "type": "number",
+      "minimum": 0,
+      "exclusiveMinimum": true
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  },
+  "required": ["id", "name", "price"]
+}
