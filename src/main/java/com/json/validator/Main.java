@@ -5,6 +5,7 @@ import com.github.fge.jsonschema.core.exceptions.ProcessingException;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 
 /**
  * Created by sampathkatari on 12/08/18.
@@ -28,6 +29,17 @@ public class Main {
             File jsonFile = new File(loader.getResource(jsonFilePath).getFile());
             return ValidationUtils.isJsonValid(schemaFile, jsonFile);
         }catch(Exception ex) {
+            System.out.println(ex);
+        }
+        return false;
+    }
+
+    public boolean isValidJsonFromUrl(final String schemaUrl, final String jsonDataUrl) {
+        try{
+            URL schema = new URL(schemaUrl);
+            URL jsonData = new URL(schemaUrl);
+            return ValidationUtils.isJsonValid(schema, jsonData);
+        } catch (Exception ex) {
             System.out.println(ex);
         }
         return false;
